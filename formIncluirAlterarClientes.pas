@@ -199,7 +199,7 @@ begin
   finally
     Result.Text:=JsonStream.DataString.ToUpper;
     jObj := TJSONObject.ParseJSONValue(TEncoding.ASCII.GetBytes(JsonStream.DataString), 0) as TJSONObject;
-    Showmessage(jObj.ToString);
+    // Showmessage(jObj.ToString);
     dsfdmClientes.DataSet.FieldByName('ENDERECO').AsString:=Decode(StringReplace(UpperCase(jObj.GetValue('logradouro').ToString),'"','', [rfReplaceAll]));
     dsfdmClientes.DataSet.FieldByName('COMPLEMENTO').AsString:=Decode(StringReplace(UpperCase(jObj.GetValue('complemento').ToString),'"','', [rfReplaceAll]));
     dsfdmClientes.DataSet.FieldByName('BAIRRO').AsString:=Decode(StringReplace(UpperCase(jObj.GetValue('bairro').ToString),'"','', [rfReplaceAll]));
